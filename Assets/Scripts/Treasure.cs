@@ -11,19 +11,13 @@ public class Treasure : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             GameManager.Instance.GetCoin();
             animator.SetTrigger("Collected");
-            Destroy(gameObject, 1.5f);
+            Destroy(gameObject, 1f);
         }
     }
 }
