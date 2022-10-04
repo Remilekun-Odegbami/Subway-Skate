@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private const int COIN_SCORE = 5;
     public static GameManager Instance { get; set; }
 
+    public bool isDead { get; set; }
+
     private bool isGameStarted = false;
 
     private PlayerController playerController;
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
             playerController.StartRunning();
         }
 
-        if (isGameStarted)
+        if (isGameStarted && !isDead)
         {
             score+=(Time.deltaTime * modifierScore);
             if(lastScore != (int)score)

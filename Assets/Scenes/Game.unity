@@ -157,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d8bbf214de18b645aab8cd4d92c17d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SHOW_COLLIDER: 0
   ramps:
   - {fileID: 4237880079899812625, guid: 2e1b281fdfcae9049abaa55115b3d550, type: 3}
   - {fileID: 4353066834989614859, guid: b818d61e89f49644fb4e4c5b456ef7a8, type: 3}
@@ -171,7 +172,7 @@ MonoBehaviour:
   availableSegments:
   - {fileID: 6883757621250787983, guid: fc284a0222a60ef47b48b780dd03c643, type: 3}
   - {fileID: 5786134762826118973, guid: b7ad50d14a3add74a90d2b2faa49f1ee, type: 3}
-  - {fileID: 8747099164477682172, guid: 9d3f0ab5a5815c4488e950bd7cae8e23, type: 3}
+  - {fileID: 6456190718059578490, guid: f3f7d6a5cb7f173439962a1c6d504497, type: 3}
   availableTransitions:
   - {fileID: 1741781677053024616, guid: d17c4ed001df2b34892bb7f7a98bb1ef, type: 3}
   segments: []

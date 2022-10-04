@@ -11,15 +11,13 @@ public class LevelManager : MonoBehaviour
     public const float DISTANCE_BEFORE_SPAWN = 100f;
     private const int INITIAL_SEGMENTS = 10;
     private const int MAX_SEGMENTS_ON_SCREEN = 15;
-    private const bool SHOW_COLLIDER = true;
+    public bool SHOW_COLLIDER = true; //$$
 
     private int amountOfActiveSegments;
     private int continiousSegments;
     private int currentSpawnZ;
     private int currentLevel;
     private int y1,y2,y3;
-
-
 
     // Level Spawning - List of pieces
     public List<Piece> ramps = new List<Piece>();
@@ -51,8 +49,23 @@ public class LevelManager : MonoBehaviour
         //spawn segments
         for (int i = 0; i < INITIAL_SEGMENTS; i++)
         {
-            // Generate SEgments
+            // Generate Segments
             GenerateSegment();
+        }
+    }
+
+    private void Update()
+    {
+        // show objects when camera gets closer to them
+        if(currentSpawnZ - cameraContainer.position.z < DISTANCE_BEFORE_SPAWN)
+        {
+            GenerateSegment();
+        }
+        // delete spawned elements when we pass them
+        if (amountOfActiveSegments >= MAX_SEGMENTS_ON_SCREEN)
+        {
+            segments[amountOfActiveSegments - 1].Despawn();
+            amountOfActiveSegments--;
         }
     }
 
@@ -73,6 +86,7 @@ public class LevelManager : MonoBehaviour
 
     private void SpawnSegment()
     {
+        // the segments spawned should fit the last one spawned
         List<Segment> possibleSegments = availableSegments.FindAll(x=> x.beginY1 == y1 || x.beginY2 == y2 || x.beginY3 == y3);
         int id = Random.Range(0, possibleSegments.Count);
 
@@ -125,7 +139,9 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            // remove it from the list
             segments.Remove(s);
+            // add it to the list but this time at the first index
             segments.Insert(0, s);
         }
 

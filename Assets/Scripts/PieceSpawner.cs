@@ -9,7 +9,23 @@ public class PieceSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        currentPiece = LevelManager.Instance.GetPiece(type, 0); // return piece from the list of pieces
+        int amtObj = 0;
+        switch (type)
+        {
+            case PieceType.jump:
+                amtObj = LevelManager.Instance.jumps.Count;
+                break;
+            case PieceType.slide:
+                amtObj = LevelManager.Instance.slides.Count;
+                break;
+            case PieceType.ramp:
+                amtObj = LevelManager.Instance.ramps.Count;
+                break;
+            case PieceType.longBlock:
+                amtObj = LevelManager.Instance.longBlocks.Count;
+                break;
+        }
+        currentPiece = LevelManager.Instance.GetPiece(type, Random.Range(0,amtObj)); // return piece from the list of pieces
         currentPiece.gameObject.SetActive(true);
         currentPiece.transform.SetParent(transform, false);
     }
