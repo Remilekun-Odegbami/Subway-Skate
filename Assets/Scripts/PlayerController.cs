@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     // Animation
     private Animator animator;
 
-    private const float LANE_DISTANCE = 2f;
+    private const float LANE_DISTANCE = 2.5f;
     private const float TURN_SPEED = 0.05f;
 
     private bool isRunning = false;

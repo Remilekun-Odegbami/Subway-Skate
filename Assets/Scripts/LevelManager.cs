@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
 
     public const float DISTANCE_BEFORE_SPAWN = 100f;
     private const int INITIAL_SEGMENTS = 10;
+    private const int INITIAL_TRANSITION_SEGMENTS = 2;
     private const int MAX_SEGMENTS_ON_SCREEN = 15;
     public bool SHOW_COLLIDER = true; //$$
 
@@ -34,7 +35,7 @@ public class LevelManager : MonoBehaviour
     public List<Segment> segments = new List<Segment>();
 
     //Game Play
-    private bool isMoving = false;
+    //private bool isMoving = false;
 
     private void Awake()
     {
@@ -49,8 +50,16 @@ public class LevelManager : MonoBehaviour
         //spawn segments
         for (int i = 0; i < INITIAL_SEGMENTS; i++)
         {
-            // Generate Segments
-            GenerateSegment();
+            if (i < INITIAL_TRANSITION_SEGMENTS)
+            {
+                // spawn empty spaces in front so the player can have some space before game start
+                SpawnTransition();
+            }
+            else
+            {
+                // Generate Segments
+                GenerateSegment();
+            }
         }
     }
 
