@@ -5,15 +5,16 @@ using UnityEngine;
 public class Treasure : MonoBehaviour
 {
     private Animator animator;
-   private void Start()
+   private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    //private void OnEnable()
-    //{
-    //    animator.SetTrigger("Spawn");
-    //}
+    private void OnEnable()
+    {
+        animator.SetTrigger("Spawn");
+        gameObject.SetActive(true);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
