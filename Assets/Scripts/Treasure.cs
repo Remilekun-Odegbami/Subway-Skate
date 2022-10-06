@@ -5,11 +5,15 @@ using UnityEngine;
 public class Treasure : MonoBehaviour
 {
     private Animator animator;
-    // Start is called before the first frame update
-    void Start()
+   private void Start()
     {
         animator = GetComponent<Animator>();
     }
+
+    //private void OnEnable()
+    //{
+    //    animator.SetTrigger("Spawn");
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,7 +21,6 @@ public class Treasure : MonoBehaviour
         {
             GameManager.Instance.GetCoin();
             animator.SetTrigger("Collected");
-            Destroy(gameObject, 1f);
         }
     }
 }
