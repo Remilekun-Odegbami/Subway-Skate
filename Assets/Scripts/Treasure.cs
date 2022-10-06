@@ -13,7 +13,6 @@ public class Treasure : MonoBehaviour
     private void OnEnable()
     {
         animator.SetTrigger("Spawn");
-        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
