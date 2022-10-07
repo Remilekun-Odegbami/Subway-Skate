@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     private int lastScore;
 
+    // play menu
+    public Animator playMenuAnim;
+    public TextMeshProUGUI pointScoredText, coinCollectedText;
 
     private void Awake()
     {
@@ -70,5 +73,18 @@ public class GameManager : MonoBehaviour
     {
         modifierScore = 1.0f + modifierAmount;
         modifierText.text = "Speed: x" + modifierScore.ToString("0.0");// this cuts the extra 0 at the end
+    }
+
+    public void OnPlay()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game");
+    }
+
+    public void OnDeath()
+    {
+        isDead = true;
+        pointScoredText.text = "Score: " + score.ToString("0");
+        coinCollectedText.text = "Coins: " + coinScore.ToString("0");
+        playMenuAnim.SetTrigger("Play");
     }
 }

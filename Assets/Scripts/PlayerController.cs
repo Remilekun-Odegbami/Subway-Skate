@@ -193,7 +193,7 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("Death");
         isRunning = false;
-        GameManager.Instance.isDead = true;
+        GameManager.Instance.OnDeath();
     }
 
     // this works for only character controller
