@@ -23,7 +23,7 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        // are we spawning the game obj
+        // check to see if we are spawning the game obj
         if(Random.Range(0.0f, 1.0f) > chanceToSpawn)
         {
             return;

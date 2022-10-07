@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     // play menu
     public Animator playMenuAnim;
+    public Animator gameCanvasAnim;
+
     public TextMeshProUGUI pointScoredText, coinCollectedText;
 
     private void Awake()
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour
             isGameStarted = true;
             playerController.StartRunning();
             FindObjectOfType<GlacierSpawner>().isScrolling = true;
+            FindObjectOfType<CameraController>().isMoving = true;
+            gameCanvasAnim.SetTrigger("Show");
         }
 
         if (isGameStarted && !isDead)
