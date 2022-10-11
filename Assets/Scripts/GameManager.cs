@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     // play menu
     public Animator playMenuAnim;
-    public Animator gameCanvasAnim;
+    public Animator gameCanvasAnim, mainMenuAnim;
 
     public TextMeshProUGUI pointScoredText, coinCollectedText;
 
@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
             FindObjectOfType<GlacierSpawner>().isScrolling = true;
             FindObjectOfType<CameraController>().isMoving = true;
             gameCanvasAnim.SetTrigger("Show");
+            mainMenuAnim.SetTrigger("Hide");
         }
 
         if (isGameStarted && !isDead)
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
         pointScoredText.text = "Score: " + score.ToString("0");
         coinCollectedText.text = "Coins: " + coinScore.ToString("0");
         playMenuAnim.SetTrigger("Play");
+        gameCanvasAnim.SetTrigger("Hide");
         FindObjectOfType<GlacierSpawner>().isScrolling = false;
     }
 }
