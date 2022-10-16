@@ -26,7 +26,7 @@ public class MobileInput : MonoBehaviour
     private void Update()
     {
         // start by resetting all the booleans to false
-        tap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
+        tap = swipeLeft = swipeRight = swipeDown = swipeUp = false;
 
         //check for PC inputs
         #region Standalone Inputs

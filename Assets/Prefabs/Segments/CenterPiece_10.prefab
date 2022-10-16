@@ -1076,7 +1076,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4492808990161045825, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4870104387291801017, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
       propertyPath: m_RootOrder
@@ -1088,11 +1088,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4870104387291801017, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.73
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4870104387291801017, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.6
+      value: 4.06
       objectReference: {fileID: 0}
     - target: {fileID: 4870104387291801017, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1129,6 +1129,10 @@ PrefabInstance:
     - target: {fileID: 7720991785510925773, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9200588869009257713, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}
+      propertyPath: maxCoin
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b18aac817b77294d9c15f7b002e9a71, type: 3}

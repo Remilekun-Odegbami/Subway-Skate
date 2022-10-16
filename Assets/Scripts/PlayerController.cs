@@ -18,18 +18,18 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
 
     // Movement
-    private float jumpForce = 7.0f;
+    private float jumpForce = 5.0f;
     private float gravity = 12.0f;
     private float verticalVelocity;
 
     // speed modifier
-    private float defaultSpeed = 2.0f;
+    private float defaultSpeed = 3.0f;
     private float speed;
     private float speedIncreaseLastTick;
     private float speedIncreaseTime = 2.5f;
     private float speedIncreaseAmount = 0.1f;
 
-    private int desiredLane = 1; // 0 -left 1 -middle 2-right
+    private int desiredLane = 1; // 0 = left 1 = middle 2 = right
 
 
 
@@ -79,10 +79,11 @@ public class PlayerController : MonoBehaviour
             targetPosition += Vector3.right * LANE_DISTANCE;
         }
 
-        // move vector calculation
+        // move delta calculation
         Vector3 moveVector = Vector3.zero;
 
-        moveVector.x = (targetPosition - transform.position).normalized.x * speed; // where player is supposed to be - where he is at the moment
+        moveVector.x = (targetPosition - transform.position).normalized.x * speed; // where player is supposed to be - where he is at the moment. normalized makes it to be based on a single meter
+
 
         bool isGrounded = IsGrounded();
         animator.SetBool("Grounded", isGrounded);
@@ -152,6 +153,7 @@ public class PlayerController : MonoBehaviour
         //        desiredLane = 2;
         //    }
         //}
+
         //The above line of code can be written as 
         desiredLane += (goingRight) ? 1 : -1;
         desiredLane = Mathf.Clamp(desiredLane, 0, 2);

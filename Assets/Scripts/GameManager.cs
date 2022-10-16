@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private PlayerController playerController;
 
     //UI and UI fields
-    public TextMeshProUGUI scoreText, coinText, modifierText; 
+    public TextMeshProUGUI scoreText, coinText, modifierText, hiscoreText; 
 
     private float score, coinScore, modifierScore;
 
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         modifierScore = 1;
         DefaultScores();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        hiscoreText.text = "High Score: " + PlayerPrefs.GetInt("Hiscore").ToString();
     }
 
     private void Update()
@@ -94,5 +95,16 @@ public class GameManager : MonoBehaviour
         playMenuAnim.SetTrigger("Play");
         gameCanvasAnim.SetTrigger("Hide");
         FindObjectOfType<GlacierSpawner>().isScrolling = false;
+
+        //check if this is a highscore
+        if (score > PlayerPrefs.GetInt("Hiscore"))
+        {
+            float s = score;
+            if(s % 1 == 0)
+            {
+                s += 1;
+            }
+            PlayerPrefs.SetInt("Hiscore", (int)s);
+        }
     }
 }
