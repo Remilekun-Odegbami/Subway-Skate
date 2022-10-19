@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private int desiredLane = 1; // 0 = left 1 = middle 2 = right
 
-
+    public AudioClip crashSound;
+    private AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         speed = defaultSpeed;
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -194,6 +196,7 @@ public class PlayerController : MonoBehaviour
     private void Crash()
     {
         animator.SetTrigger("Death");
+        playerAudio.PlayOneShot(crashSound, 1.0f);
         isRunning = false;
         GameManager.Instance.OnDeath();
     }

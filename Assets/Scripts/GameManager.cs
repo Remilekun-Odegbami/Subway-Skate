@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
     private const int COIN_SCORE = 5;
     public static GameManager Instance { get; set; }
+    public static bool mute = false; 
 
     public bool isDead { get; set; }
 
@@ -42,6 +44,10 @@ public class GameManager : MonoBehaviour
         // if user does not tap screen do not do anything
         if(MobileInput.Instance.Tap && !isGameStarted)
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
             isGameStarted = true;
             playerController.StartRunning();
             FindObjectOfType<GlacierSpawner>().isScrolling = true;
